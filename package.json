@@ -1,0 +1,17 @@
+{
+    "buildNpmdoc":"gulp-rev-collector",
+    "devDependencies": {
+        "gulp-rev-collector": "*",
+        "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "utility2": "kaizhu256/node-utility2#alpha"
+    },
+    "name":"npmdoc-gulp-rev-collector",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npmdoc/node-npmdoc-gulp-rev-collector"
+    },
+    "scripts": {
+        "build-ci": "utility2 shReadmeTest build_ci.sh"
+    },
+    "version": "0.0.1"
+}
