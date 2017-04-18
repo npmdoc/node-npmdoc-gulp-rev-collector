@@ -61,12 +61,211 @@
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gulp-rev-collector">module gulp-rev-collector</a><ol>
 
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-rev-collector.gulp-rev-collector">
+            function <span class="apidocSignatureSpan"></span>gulp-rev-collector
+            <span class="apidocSignatureSpan">(opts)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-rev-collector.toString">
+            function <span class="apidocSignatureSpan">gulp-rev-collector.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-rev-collector.toString">module gulp-rev-collector.toString</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.gulp-rev-collector.toString.toString">
+            function <span class="apidocSignatureSpan">gulp-rev-collector.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
     </ol></li>
 
 </ol></div>
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.gulp-rev-collector" id="apidoc.module.gulp-rev-collector">module gulp-rev-collector</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-rev-collector.gulp-rev-collector" id="apidoc.element.gulp-rev-collector.gulp-rev-collector">
+        function <span class="apidocSignatureSpan"></span>gulp-rev-collector
+        <span class="apidocSignatureSpan">(opts)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function revCollector(opts) {
+    opts = _.defaults((opts || {}), defaults);
+
+    var manifest  = {};
+    var mutables = [];
+    return through.obj(function (file, enc, cb) {
+        if (!file.isNull()) {
+            var mData = _getManifestData.call(this, file, opts);
+            if (mData) {
+                _.extend( manifest, mData );
+            } else {
+                mutables.push(file);
+            }
+        }
+        cb();
+    }, function (cb) {
+        var changes = [];
+        var dirReplacements = [];
+        if ( _.isObject(opts.dirReplacements) ) {
+            Object.keys(opts.dirReplacements).forEach(function (srcDirname) {
+                dirReplacements.push({
+                    dirRX:  escPathPattern( closeDirBySep(srcDirname) ),
+                    dirRpl: opts.dirReplacements[srcDirname]
+                });
+            });
+        }
+
+        if (opts.collectedManifest) {
+            this.push(
+                new gutil.File({
+                    path: opts.collectedManifest,
+                    contents: new Buffer(JSON.stringify(manifest, null, &#x22;\t&#x22;))
+                })
+            );
+        }
+
+        for (var key in manifest) {
+            var patterns = [ escPathPattern(key) ];
+            if (opts.replaceReved) {
+                patterns.push( escPathPattern( (path.dirname(key) === &#x27;.&#x27; ? &#x27;&#x27; : closeDirBySep(path.dirname(key)) ) + path.basename
+(key, path.extname(key)) )
+                            + opts.revSuffix
+                            + escPathPattern( path.extname(key) )
+                        );
+            }
+
+            if ( dirReplacements.length ) {
+                dirReplacements.forEach(function (dirRule) {
+                    patterns.forEach(function (pattern) {
+                        changes.push({
+                            regexp: new RegExp(  dirRule.dirRX + pattern, &#x27;g&#x27; ),
+                            patternLength: (dirRule.dirRX + pattern).length,
+                            replacement: _.isFunction(dirRule.dirRpl)
+                                            ? dirRule.dirRpl(manifest[key])
+                                            : closeDirBySep(dirRule.dirRpl) + manifest[key]
+                        });
+                    });
+                });
+            } else {
+                patterns.forEach(function (pattern) {
+                    // without dirReplacements we must leave asset filenames with prefixes in its original state
+                    changes.push({
+                        regexp: new RegExp( &#x27;([\/\\\\\&#x27;&#x22;])&#x27; + pattern, &#x27;g&#x27; ),
+                        patternLength: pattern.length,
+                        replacement: &#x27;$1&#x27; + manifest[key]
+                    });
+                });
+            }
+        }
+
+        // Replace longer patterns first
+        // e.g. match `script.js.map` before `script.js`
+        changes.sort(
+            function(a, b) {
+                return b.patternLength - a.patternLength;
+            }
+        );
+        mutables.forEach(function (file){
+            if (!file.isNull()) {
+                var src = file.contents.toString(&#x27;utf8&#x27;);
+                changes.forEach(function (r) {
+                    src = src.replace(r.regexp, r.replacement);
+                });
+                file.contents = new Buffer(src);
+            }
+            this.push(file);
+        }, this);
+
+        cb();
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-rev-collector.toString" id="apidoc.element.gulp-rev-collector.toString">
+        function <span class="apidocSignatureSpan">gulp-rev-collector.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+    return text;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function _getManifestData(file, opts) {
+var data;
+var ext = path.extname(file.path);
+if (ext === &#x27;.json&#x27;) {
+    var json = {};
+    try {
+        var content = file.contents.<span class="apidocCodeKeywordSpan">toString</span>(&#x27;utf8&#x27;);
+        if (content) {
+            json = JSON.parse(content);
+        }
+    } catch (x) {
+        this.emit(&#x27;error&#x27;, new PluginError(PLUGIN_NAME,  x));
+        return;
+    }
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.gulp-rev-collector.toString" id="apidoc.module.gulp-rev-collector.toString">module gulp-rev-collector.toString</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.gulp-rev-collector.toString.toString" id="apidoc.element.gulp-rev-collector.toString.toString">
+        function <span class="apidocSignatureSpan">gulp-rev-collector.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function _getManifestData(file, opts) {
+var data;
+var ext = path.extname(file.path);
+if (ext === &#x27;.json&#x27;) {
+    var json = {};
+    try {
+        var content = file.contents.<span class="apidocCodeKeywordSpan">toString</span>(&#x27;utf8&#x27;);
+        if (content) {
+            json = JSON.parse(content);
+        }
+    } catch (x) {
+        this.emit(&#x27;error&#x27;, new PluginError(PLUGIN_NAME,  x));
+        return;
+    }
+...</pre></li>
+    </ul>
+
 
 </div>
 

@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://github.com/shonny-ua/gulp-rev-collector"
-
-    >gulp-rev-collector (v1.1.1)</a>
+    <a href="https://github.com/shonny-ua/gulp-rev-collector">gulp-rev-collector (v1.1.1)</a>
 </h1>
 <h4>Static asset revision data collector from manifests, generated from different streams, and replace their links in html template.</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.gulp-rev-collector">module gulp-rev-collector</a><ol>
 
@@ -138,7 +131,7 @@
             this.push(
                 new gutil.File({
                     path: opts.collectedManifest,
-                    contents: new Buffer(JSON.stringify(manifest, null, &#x22;\t&#x22;))
+                    contents: new Buffer(JSON.stringify(manifest, null, "\t"))
                 })
             );
         }
@@ -146,7 +139,7 @@
         for (var key in manifest) {
             var patterns = [ escPathPattern(key) ];
             if (opts.replaceReved) {
-                patterns.push( escPathPattern( (path.dirname(key) === &#x27;.&#x27; ? &#x27;&#x27; : closeDirBySep(path.dirname(key)) ) + path.basename
+                patterns.push( escPathPattern( (path.dirname(key) === '.' ? '' : closeDirBySep(path.dirname(key)) ) + path.basename
 (key, path.extname(key)) )
                             + opts.revSuffix
                             + escPathPattern( path.extname(key) )
@@ -157,7 +150,7 @@
                 dirReplacements.forEach(function (dirRule) {
                     patterns.forEach(function (pattern) {
                         changes.push({
-                            regexp: new RegExp(  dirRule.dirRX + pattern, &#x27;g&#x27; ),
+                            regexp: new RegExp(  dirRule.dirRX + pattern, 'g' ),
                             patternLength: (dirRule.dirRX + pattern).length,
                             replacement: _.isFunction(dirRule.dirRpl)
                                             ? dirRule.dirRpl(manifest[key])
@@ -169,9 +162,9 @@
                 patterns.forEach(function (pattern) {
                     // without dirReplacements we must leave asset filenames with prefixes in its original state
                     changes.push({
-                        regexp: new RegExp( &#x27;([\/\\\\\&#x27;&#x22;])&#x27; + pattern, &#x27;g&#x27; ),
+                        regexp: new RegExp( '([\/\\\\\'"])' + pattern, 'g' ),
                         patternLength: pattern.length,
-                        replacement: &#x27;$1&#x27; + manifest[key]
+                        replacement: '$1' + manifest[key]
                     });
                 });
             }
@@ -186,7 +179,7 @@
         );
         mutables.forEach(function (file){
             if (!file.isNull()) {
-                var src = file.contents.toString(&#x27;utf8&#x27;);
+                var src = file.contents.toString('utf8');
                 changes.forEach(function (r) {
                     src = src.replace(r.regexp, r.replacement);
                 });
@@ -218,15 +211,15 @@
 function _getManifestData(file, opts) {
 var data;
 var ext = path.extname(file.path);
-if (ext === &#x27;.json&#x27;) {
+if (ext === '.json') {
     var json = {};
     try {
-        var content = file.contents.<span class="apidocCodeKeywordSpan">toString</span>(&#x27;utf8&#x27;);
+        var content = file.contents.<span class="apidocCodeKeywordSpan">toString</span>('utf8');
         if (content) {
             json = JSON.parse(content);
         }
     } catch (x) {
-        this.emit(&#x27;error&#x27;, new PluginError(PLUGIN_NAME,  x));
+        this.emit('error', new PluginError(PLUGIN_NAME,  x));
         return;
     }
 ...</pre></li>
@@ -252,15 +245,15 @@ if (ext === &#x27;.json&#x27;) {
 function _getManifestData(file, opts) {
 var data;
 var ext = path.extname(file.path);
-if (ext === &#x27;.json&#x27;) {
+if (ext === '.json') {
     var json = {};
     try {
-        var content = file.contents.<span class="apidocCodeKeywordSpan">toString</span>(&#x27;utf8&#x27;);
+        var content = file.contents.<span class="apidocCodeKeywordSpan">toString</span>('utf8');
         if (content) {
             json = JSON.parse(content);
         }
     } catch (x) {
-        this.emit(&#x27;error&#x27;, new PluginError(PLUGIN_NAME,  x));
+        this.emit('error', new PluginError(PLUGIN_NAME,  x));
         return;
     }
 ...</pre></li>
@@ -275,3 +268,4 @@ if (ext === &#x27;.json&#x27;) {
     ]
 </div>
 </div>
+</body></html>
