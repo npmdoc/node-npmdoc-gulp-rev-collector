@@ -1,9 +1,14 @@
-# api documentation for  [gulp-rev-collector (v1.1.1)](https://github.com/shonny-ua/gulp-rev-collector)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-rev-collector.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-rev-collector) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-rev-collector.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-rev-collector)
+# npmdoc-gulp-rev-collector
+
+#### api documentation for  [gulp-rev-collector (v1.1.1)](https://github.com/shonny-ua/gulp-rev-collector)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-rev-collector.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-rev-collector) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-rev-collector.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-rev-collector)
+
 #### Static asset revision data collector from manifests, generated from different streams, and replace their links in html template.
 
-[![NPM](https://nodei.co/npm/gulp-rev-collector.png?downloads=true)](https://www.npmjs.com/package/gulp-rev-collector)
+[![NPM](https://nodei.co/npm/gulp-rev-collector.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/gulp-rev-collector)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-rev-collector/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-gulp-rev-collector_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-rev-collector/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-gulp-rev-collector/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-gulp-rev-collector/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-gulp-rev-collector/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-gulp-rev-collector/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-gulp-rev-collector/build/screenCapture.npmPackageListing.svg)
 
@@ -17,8 +22,7 @@
 
 {
     "author": {
-        "name": "Oleksandr Ovcharenko",
-        "email": "shonny.ua@gmail.com"
+        "name": "Oleksandr Ovcharenko"
     },
     "bugs": {
         "url": "https://github.com/shonny-ua/gulp-rev-collector/issues"
@@ -63,13 +67,11 @@
     "main": "index.js",
     "maintainers": [
         {
-            "name": "shonny.ua",
-            "email": "shonny.ua@gmail.com"
+            "name": "shonny.ua"
         }
     ],
     "name": "gulp-rev-collector",
     "optionalDependencies": {},
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/shonny-ua/gulp-rev-collector.git"
@@ -80,16 +82,6 @@
     "version": "1.1.1"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module gulp-rev-collector](#apidoc.module.gulp-rev-collector)
-
-
-
-# <a name="apidoc.module.gulp-rev-collector"></a>[module gulp-rev-collector](#apidoc.module.gulp-rev-collector)
 
 
 
