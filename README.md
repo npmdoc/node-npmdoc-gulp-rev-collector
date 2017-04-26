@@ -1,6 +1,6 @@
 # npmdoc-gulp-rev-collector
 
-#### api documentation for  [gulp-rev-collector (v1.1.1)](https://github.com/shonny-ua/gulp-rev-collector)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-rev-collector.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-rev-collector) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-rev-collector.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-rev-collector)
+#### basic api documentation for  [gulp-rev-collector (v1.1.1)](https://github.com/shonny-ua/gulp-rev-collector)  [![npm package](https://img.shields.io/npm/v/npmdoc-gulp-rev-collector.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-gulp-rev-collector) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-gulp-rev-collector.svg)](https://travis-ci.org/npmdoc/node-npmdoc-gulp-rev-collector)
 
 #### Static asset revision data collector from manifests, generated from different streams, and replace their links in html template.
 
@@ -79,7 +79,8 @@
     "scripts": {
         "test": "mocha"
     },
-    "version": "1.1.1"
+    "version": "1.1.1",
+    "bin": {}
 }
 ```
 
