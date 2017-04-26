@@ -63,28 +63,6 @@
 
         </li>
 
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.gulp-rev-collector.toString">
-            function <span class="apidocSignatureSpan">gulp-rev-collector.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
-    <li class="apidocModuleLi"><a href="#apidoc.module.gulp-rev-collector.toString">module gulp-rev-collector.toString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.gulp-rev-collector.toString.toString">
-            function <span class="apidocSignatureSpan">gulp-rev-collector.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
     </ol></li>
 
 </ol></div>
@@ -192,71 +170,6 @@
     });
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.gulp-rev-collector.toString" id="apidoc.element.gulp-rev-collector.toString">
-        function <span class="apidocSignatureSpan">gulp-rev-collector.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-
-function _getManifestData(file, opts) {
-var data;
-var ext = path.extname(file.path);
-if (ext === '.json') {
-    var json = {};
-    try {
-        var content = file.contents.<span class="apidocCodeKeywordSpan">toString</span>('utf8');
-        if (content) {
-            json = JSON.parse(content);
-        }
-    } catch (x) {
-        this.emit('error', new PluginError(PLUGIN_NAME,  x));
-        return;
-    }
-...</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.gulp-rev-collector.toString" id="apidoc.module.gulp-rev-collector.toString">module gulp-rev-collector.toString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.gulp-rev-collector.toString.toString" id="apidoc.element.gulp-rev-collector.toString.toString">
-        function <span class="apidocSignatureSpan">gulp-rev-collector.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-
-function _getManifestData(file, opts) {
-var data;
-var ext = path.extname(file.path);
-if (ext === '.json') {
-    var json = {};
-    try {
-        var content = file.contents.<span class="apidocCodeKeywordSpan">toString</span>('utf8');
-        if (content) {
-            json = JSON.parse(content);
-        }
-    } catch (x) {
-        this.emit('error', new PluginError(PLUGIN_NAME,  x));
-        return;
-    }
-...</pre></li>
     </ul>
 
 
